@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rank de Combate - Dk Swordplay</title>
+  <meta name="description" content="Confira o ranking dos guerreiros do Dk Swordplay divididos em Ordem de Ouro (Zodíaco), Ordem de Prata e Ordem de Bronze por todo o Brasil.">
+  <!-- CSS Stylesheets -->
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/pages.css">
+</head>
+<body>
+
+  <!-- HEADER / NAVEGAÇÃO -->
+  <header>
+    <div class="container">
+      <a href="index.html" class="logo" id="headerLogo">
+        <img src="assets/images/logo.png" alt="Dk Swordplay Logo">
+        <span>DK SWORDPLAY</span>
+      </a>
+      
+      <button class="menu-toggle" aria-label="Abrir Menu" id="menuToggleBtn">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+
+      <ul class="nav-menu" id="navMenu">
+        <li><a href="index.html" class="nav-link">Início</a></li>
+        <li><a href="sobre.html" class="nav-link">Sobre Nós</a></li>
+        <li><a href="galeria.html" class="nav-link">Galeria</a></li>
+        <li><a href="rank-de-combate.html" class="nav-link active">Rank de Combate</a></li>
+        <li><a href="contato.html" class="nav-link">Contato</a></li>
+      </ul>
+    </div>
+  </header>
+
+  <!-- BANNER SIMPLES DE PÁGINA -->
+  <section class="section-padding" style="background: linear-gradient(180deg, #000000 0%, var(--bg-primary) 100%); padding-top: 140px; padding-bottom: 40px; border-bottom: 1px solid rgba(255,255,255,0.03);">
+    <div class="container text-center reveal">
+      <span class="text-gold" style="font-family: var(--font-headings); letter-spacing: 0.2em; text-transform: uppercase;">Classificação de Combatentes</span>
+      <h1 style="margin-top: 10px; font-size: 3rem; margin-bottom: 20px;">RANK DE COMBATE</h1>
+      <div style="display: flex; justify-content: center; align-items: center; margin-top: 25px;">
+        <img src="assets/images/mapa_brasil.png" alt="Mapa do Brasil - Contorno Branco" style="max-width: 160px; height: auto; opacity: 0.85; filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.15));">
+      </div>
+    </div>
+  </section>
+
+  <!-- SEÇÃO PRINCIPAL DE ABAS E GRID -->
+  <section class="section-padding" style="padding-top: 40px;">
+    <div class="container">
+
+      <!-- Abas de Estados (Pills) -->
+      <div class="state-tabs-container reveal">
+        <button class="state-tab active" data-state="rj">Rio de Janeiro</button>
+        <button class="state-tab" data-state="sp">São Paulo</button>
+        <button class="state-tab" data-state="mg">Minas Gerais</button>
+        <button class="state-tab" data-state="df">Brasília</button>
+        <button class="state-tab" data-state="am">Amazônas</button>
+        <button class="state-tab" data-state="es">Espírito Santo</button>
+        <button class="state-tab" data-state="al">Alagoas</button>
+        <button class="state-tab" data-state="ba">Bahia</button>
+      </div>
+
+      <!-- Símbolo de Combate SVG Comum para reutilizar nas Figurinhas -->
+      <svg style="display: none;">
+        <g id="sticker-avatar-svg">
+          <path d="M50 15 L75 25 V60 Q75 80 50 90 Q25 80 25 60 V25 Z" fill="rgba(255, 255, 255, 0.02)" stroke="currentColor" stroke-width="2"/>
+          <path d="M30 70 L70 30 M65 25 L75 35" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+          <path d="M70 70 L30 30 M35 25 L25 35" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+          <path d="M50 35 C42 35 38 42 38 50 V60 C38 65 42 68 50 68 C58 68 62 65 62 60 V50 C62 42 58 35 50 35 Z" fill="rgba(255, 255, 255, 0.05)" stroke="currentColor" stroke-width="2"/>
+          <path d="M48 45 H52 V55 H48 Z M45 48 H55 M50 35 V30" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+        </g>
+      </svg>
+
+      <!-- Área de Conteúdo das Abas (Preenchido dinamicamente pelo js/rank.js) -->
+      <div class="reveal">
+        
+        <!-- ================= SÃO PAULO (SP) ================= -->
+        <div class="state-content" data-state="sp" style="display: none;">
+          <div class="divisions-container">
+            <div class="division-column division-gold">
+              <div class="division-header">
+                <span class="badge">🥇</span>
+                <h3>Ordem de Ouro</h3>
+              </div>
+              <div class="stickers-list" id="sp-gold-list"></div>
+            </div>
+            <div class="division-column division-silver">
+              <div class="division-header">
+                <span class="badge">🥈</span>
+                <h3>Ordem de Prata</h3>
+              </div>
+              <div class="stickers-list" id="sp-silver-list"></div>
+            </div>
+            <div class="division-column division-bronze">
+              <div class="division-header">
+                <span class="badge">🥉</span>
+                <h3>Ordem de Bronze</h3>
+              </div>
+              <div class="stickers-list" id="sp-bronze-list"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ================= RIO DE JANEIRO (RJ) ================= -->
+        <div class="state-content active" data-state="rj">
+          <div class="divisions-container">
+            <div class="division-column division-gold">
+              <div class="division-header">
+                <span class="badge">🥇</span>
+                <h3>Ordem de Ouro</h3>
+              </div>
+              <div class="stickers-list" id="rj-gold-list"></div>
+            </div>
+            <div class="division-column division-silver">
+              <div class="division-header">
+                <span class="badge">🥈</span>
+                <h3>Ordem de Prata</h3>
+              </div>
+              <div class="stickers-list" id="rj-silver-list"></div>
+            </div>
+            <div class="division-column division-bronze">
+              <div class="division-header">
+                <span class="badge">🥉</span>
+                <h3>Ordem de Bronze</h3>
+              </div>
+              <div class="stickers-list" id="rj-bronze-list"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ================= MINAS GERAIS (MG) ================= -->
+        <div class="state-content" data-state="mg" style="display: none;">
+          <div class="divisions-container">
+            <div class="division-column division-gold">
+              <div class="division-header">
+                <span class="badge">🥇</span>
+                <h3>Ordem de Ouro</h3>
+              </div>
+              <div class="stickers-list" id="mg-gold-list"></div>
+            </div>
+            <div class="division-column division-silver">
+              <div class="division-header">
+                <span class="badge">🥈</span>
+                <h3>Ordem de Prata</h3>
+              </div>
+              <div class="stickers-list" id="mg-silver-list"></div>
+            </div>
+            <div class="division-column division-bronze">
+              <div class="division-header">
+                <span class="badge">🥉</span>
+                <h3>Ordem de Bronze</h3>
+              </div>
+              <div class="stickers-list" id="mg-bronze-list"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ================= BRASÍLIA (DF) ================= -->
+        <div class="state-content" data-state="df" style="display: none;">
+          <div class="divisions-container">
+            <div class="division-column division-gold">
+              <div class="division-header">
+                <span class="badge">🥇</span>
+                <h3>Ordem de Ouro</h3>
+              </div>
+              <div class="stickers-list" id="df-gold-list"></div>
+            </div>
+            <div class="division-column division-silver">
+              <div class="division-header">
+                <span class="badge">🥈</span>
+                <h3>Ordem de Prata</h3>
+              </div>
+              <div class="stickers-list" id="df-silver-list"></div>
+            </div>
+            <div class="division-column division-bronze">
+              <div class="division-header">
+                <span class="badge">🥉</span>
+                <h3>Ordem de Bronze</h3>
+              </div>
+              <div class="stickers-list" id="df-bronze-list"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ================= AMAZÔNAS (AM) ================= -->
+        <div class="state-content" data-state="am" style="display: none;">
+          <div class="divisions-container">
+            <div class="division-column division-gold">
+              <div class="division-header">
+                <span class="badge">🥇</span>
+                <h3>Ordem de Ouro</h3>
+              </div>
+              <div class="stickers-list" id="am-gold-list"></div>
+            </div>
+            <div class="division-column division-silver">
+              <div class="division-header">
+                <span class="badge">🥈</span>
+                <h3>Ordem de Prata</h3>
+              </div>
+              <div class="stickers-list" id="am-silver-list"></div>
+            </div>
+            <div class="division-column division-bronze">
+              <div class="division-header">
+                <span class="badge">🥉</span>
+                <h3>Ordem de Bronze</h3>
+              </div>
+              <div class="stickers-list" id="am-bronze-list"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ================= ESPÍRITO SANTO (ES) ================= -->
+        <div class="state-content" data-state="es" style="display: none;">
+          <div class="divisions-container">
+            <div class="division-column division-gold">
+              <div class="division-header">
+                <span class="badge">🥇</span>
+                <h3>Ordem de Ouro</h3>
+              </div>
+              <div class="stickers-list" id="es-gold-list"></div>
+            </div>
+            <div class="division-column division-silver">
+              <div class="division-header">
+                <span class="badge">🥈</span>
+                <h3>Ordem de Prata</h3>
+              </div>
+              <div class="stickers-list" id="es-silver-list"></div>
+            </div>
+            <div class="division-column division-bronze">
+              <div class="division-header">
+                <span class="badge">🥉</span>
+                <h3>Ordem de Bronze</h3>
+              </div>
+              <div class="stickers-list" id="es-bronze-list"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ================= ALAGOAS (AL) ================= -->
+        <div class="state-content" data-state="al" style="display: none;">
+          <div class="divisions-container">
+            <div class="division-column division-gold">
+              <div class="division-header">
+                <span class="badge">🥇</span>
+                <h3>Ordem de Ouro</h3>
+              </div>
+              <div class="stickers-list" id="al-gold-list"></div>
+            </div>
+            <div class="division-column division-silver">
+              <div class="division-header">
+                <span class="badge">🥈</span>
+                <h3>Ordem de Prata</h3>
+              </div>
+              <div class="stickers-list" id="al-silver-list"></div>
+            </div>
+            <div class="division-column division-bronze">
+              <div class="division-header">
+                <span class="badge">🥉</span>
+                <h3>Ordem de Bronze</h3>
+              </div>
+              <div class="stickers-list" id="al-bronze-list"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ================= BAHIA (BA) ================= -->
+        <div class="state-content" data-state="ba" style="display: none;">
+          <div class="divisions-container">
+            <div class="division-column division-gold">
+              <div class="division-header">
+                <span class="badge">🥇</span>
+                <h3>Ordem de Ouro</h3>
+              </div>
+              <div class="stickers-list" id="ba-gold-list"></div>
+            </div>
+            <div class="division-column division-silver">
+              <div class="division-header">
+                <span class="badge">🥈</span>
+                <h3>Ordem de Prata</h3>
+              </div>
+              <div class="stickers-list" id="ba-silver-list"></div>
+            </div>
+            <div class="division-column division-bronze">
+              <div class="division-header">
+                <span class="badge">🥉</span>
+                <h3>Ordem de Bronze</h3>
+              </div>
+              <div class="stickers-list" id="ba-bronze-list"></div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- RODAPÉ -->
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-col">
+          <a href="index.html" class="logo" style="margin-bottom: 20px;" id="footerLogo">
+            <img src="assets/images/logo.png" alt="Dk Swordplay Logo">
+            <span>DK SWORDPLAY</span>
+          </a>
+          <p>Grupo brasileiro dedicado à instrução, treino e competição de Artes Marciais Históricas Europeias (HEMA) e Swordplay.</p>
+          <div class="social-icons">
+            <a href="https://www.instagram.com/dk.swordplay?igsh=MW1sb2ZvOXhsZjdqOA==" target="_blank" class="social-icon" aria-label="Instagram" id="socialInsta">
+              <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.051.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/></svg>
+            </a>
+            <a href="https://discord.gg/kGwmUPKKw" target="_blank" class="social-icon" aria-label="Discord" id="socialDiscord">
+              <svg viewBox="0 0 24 24"><path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .031.057 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028c.462-.63.874-1.295 1.226-1.994a.076.076 0 0 0-.041-.106 13.107 13.107 0 0 1-1.873-.894.077.077 0 0 1-.008-.128c.126-.093.252-.19.372-.287a.075.075 0 0 1 .077-.011c3.92 1.793 8.18 1.793 12.061 0a.073.073 0 0 1 .078.009c.12.099.246.195.373.289a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.894.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03zM8.02 15.33c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.956-2.419 2.156-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.956 2.418-2.156 2.418zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.955-2.419 2.156-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.946 2.418-2.156 2.418z"/></svg>
+            </a>
+            <a href="https://wa.me/5521977928686" target="_blank" class="social-icon" aria-label="WhatsApp" id="socialWhatsapp">
+              <svg viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397.01 12.008.01c3.202.001 6.212 1.246 8.477 3.513 2.262 2.268 3.507 5.28 3.505 8.484-.004 6.657-5.34 11.997-11.953 11.997-2.005-.001-3.973-.504-5.714-1.465L0 24zm6.59-4.846c1.6.95 3.16 1.455 4.774 1.456 5.467 0 9.911-4.444 9.914-9.9 0-2.64-1.029-5.122-2.902-6.994C16.541 1.843 14.06 .815 11.424.815c-5.469 0-9.914 4.446-9.916 9.9.001 1.693.454 3.344 1.314 4.795L1.879 21.03l5.068-1.331-.3-.178z"/></svg>
+            </a>
+          </div>
+        </div>
+        
+        <div class="footer-col">
+          <h4>Navegação</h4>
+          <ul class="footer-links">
+            <li><a href="index.html" id="footLinkHome">Início</a></li>
+            <li><a href="sobre.html" id="footLinkAbout">Sobre Nós</a></li>
+            <li><a href="galeria.html" id="footLinkGallery">Galeria</a></li>
+            <li><a href="rank-de-combate.html" id="footLinkRank">Rank de Combate</a></li>
+            <li><a href="contato.html" id="footLinkContact">Contato</a></li>
+          </ul>
+        </div>     
+        <div class="footer-col">
+          <h4>Contato</h4>
+          <p style="margin-bottom: 10px;"><a href="https://wa.me/5521977928686" target="_blank" style="text-decoration: none; color: inherit; transition: var(--transition-fast);">💬 WhatsApp: +55 (21) 97792-8686</a></p>
+          <p style="margin-bottom: 10px;">📍 Parque do Ibirapuera, Portão 7</p>
+          <p>📅 Sábados, das 14h às 18h</p>
+        </div>
+        
+        <div class="footer-col">
+          <h4>Treinos</h4>
+          <p style="margin-bottom: 10px;">📍 Quinta da Boa Vista</p>
+          <p style="margin-bottom: 10px;">📍 Engenhão</p>
+          <p>📅 Domingos, das 14h às 18h</p>
+        </div>
+      </div>
+      
+      <div class="footer-bottom">
+        <p>&copy; 2026 Dk Swordplay - Todos os direitos reservados.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="js/main.js"></script>
+  <script src="js/rank.js"></script>
+</body>
+</html>

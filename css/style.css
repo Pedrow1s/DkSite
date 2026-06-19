@@ -1,0 +1,198 @@
+/* Importação de fontes premium */
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Montserrat:wght@300;400;500;600;700&display=swap');
+
+/* Design System - Variáveis de Estilo */
+:root {
+  /* Cores */
+  --bg-primary: #000000;       /* Fundo ultra escuro */
+  --bg-secondary: #080808;     /* Fundo secundário das seções */
+  --bg-tertiary: #101010;      /* Fundo de cards/elementos isolados */
+  
+  --color-gold: #ffffff;       /* Ouro envelhecido principal */
+  --color-gold-hover: #eaeaea; /* Ouro brilhante */
+  --color-gold-muted: #888888; /* Ouro escurecido/bronze */
+  --color-silver: #cccccc;     /* Prata */
+  --color-silver-dark: #666666;/* Prata fosca */
+  
+  --text-primary: #f5f5f7;     /* Branco suave */
+  --text-secondary: #a0a0b0;   /* Cinza suave para descrições */
+  --text-muted: #6e6e7d;       /* Cinza escuro para legendas/detalhes */
+  
+  --accent-red: #8b0000;       /* Vermelho sangue para detalhes de combate/perigo */
+  --accent-red-glow: rgba(139, 0, 0, 0.4);
+  
+  /* Fontes */
+  --font-headings: 'Cinzel', serif;
+  --font-body: 'Montserrat', sans-serif;
+  
+  /* Bordas & Sombras */
+  --border-gold: 1px solid rgba(255, 255, 255, 0.18);
+  --border-silver: 1px solid rgba(255, 255, 255, 0.08);
+  --border-glow: 0 0 15px rgba(255, 255, 255, 0.08);
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 16px;
+  
+  /* Transições */
+  --transition-fast: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-normal: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-slow: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Reset de CSS */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+}
+
+body {
+  font-family: var(--font-body);
+  line-height: 1.6;
+  overflow-x: hidden;
+  background-color: var(--bg-primary);
+}
+
+/* Tipografia Global */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-headings);
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  color: var(--text-primary);
+  line-height: 1.2;
+}
+
+h1 {
+  font-size: 2.8rem;
+  font-weight: 900;
+  text-shadow: 0 4px 10px rgba(0, 0, 0, 0.7);
+}
+
+h2 {
+  font-size: 2.2rem;
+  position: relative;
+  padding-bottom: 15px;
+  margin-bottom: 30px;
+}
+
+/* Detalhe dourado clássico abaixo de títulos h2 */
+h2::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 60px;
+  height: 3px;
+  background: linear-gradient(90deg, var(--color-gold), transparent);
+}
+
+h2.text-center::after {
+  left: 50%;
+  transform: translateX(-50%);
+  background: linear-gradient(90deg, transparent, var(--color-gold), transparent);
+  width: 100px;
+}
+
+h3 {
+  font-size: 1.5rem;
+  margin-bottom: 15px;
+}
+
+p {
+  font-weight: 300;
+  color: var(--text-secondary);
+  margin-bottom: 20px;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+  transition: var(--transition-fast);
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Utilitários */
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.text-gold {
+  color: var(--color-gold);
+}
+
+.text-silver {
+  color: var(--color-silver);
+}
+
+.text-center {
+  text-align: center;
+}
+
+.bg-secondary {
+  background-color: var(--bg-secondary);
+}
+
+.section-padding {
+  padding: 100px 0;
+}
+
+@media (max-width: 768px) {
+  .section-padding {
+    padding: 60px 0;
+  }
+  h1 {
+    font-size: 2rem;
+  }
+  h2 {
+    font-size: 1.8rem;
+  }
+}
+
+/* Animações com Intersection Observer */
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s ease, transform 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.reveal.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.reveal-left {
+  opacity: 0;
+  transform: translateX(-50px);
+  transition: opacity 0.8s ease, transform 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.reveal-left.active {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.reveal-right {
+  opacity: 0;
+  transform: translateX(50px);
+  transition: opacity 0.8s ease, transform 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.reveal-right.active {
+  opacity: 1;
+  transform: translateX(0);
+}
